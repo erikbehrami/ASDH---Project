@@ -4,8 +4,8 @@
 #include <iomanip>
 #include <queue>
 #include <stack>
-#include <bits/stdc++.h>
-#include <unordered_map>
+#include <map>
+#include <map>
 using namespace std;
 
 // Definimi i pemes binare
@@ -689,7 +689,7 @@ start:
     cout << "15. Implement Stack using Queues" << endl;
     cout << "16. Two Sum" << endl;
     cout << "17. Permutation Difference between Two Strings" << endl;
-    cout << "18. Count Number of Pairs With Absolute Difference K" << endl;
+    cout << "18. How Many Numbers Are Smaller Than The Current One" << endl;
     cout << "19. Jewels and Stones" << endl;
     cout << "20. First Letter to Appear Twice" << endl;
     cout << "--------------------------------------------------------------" << endl;

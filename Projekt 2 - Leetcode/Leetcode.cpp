@@ -594,28 +594,32 @@ public:
 //----------------------------------------------------------------------------------------
 
 // 18 - Time: O(n), Space: O(n)
-class Solution18 {
+class Solution18
+{
 public:
-        vector<int> smallerNumbersThanCurrent(vector<int>& nums) {
+    vector<int> smallerNumbersThanCurrent(vector<int> &nums)
+    {
         int length = nums.size();
-        map <int, int> mp;
-        vector <int> numsSorted = nums;
+        map<int, int> mp;
+        vector<int> numsSorted = nums;
         sort(numsSorted.begin(), numsSorted.end());
 
-        for(int i = length - 1; i >= 0; i--){
+        for (int i = length - 1; i >= 0; i--)
+        {
             mp[numsSorted[i]] = i;
         }
-        for(int i = 0; i < length; i++){
+        for (int i = 0; i < length; i++)
+        {
 
             nums[i] = mp[nums[i]];
         }
 
         return nums;
     }
-
 };
 
 //----------------------------------------------------------------------------------------
+
 // 19 - Time: O(n), Space: O(n)
 class Solution19
 {
@@ -642,6 +646,7 @@ public:
 };
 
 //----------------------------------------------------------------------------------------
+
 // 20 -  Time: O(n), Space: O(n)
 class Solution20
 {
@@ -1036,13 +1041,13 @@ start:
         cout << "Smaller number than current one: {";
 
         for (int i = 0; i < v.size(); i++)
-        {   
-            if(i!=v.size() - 1)
-            cout << v[i] << ", ";
+        {
+            if (i != v.size() - 1)
+                cout << v[i] << ", ";
             else
-            cout << v[i] << "}.\n";
+                cout << v[i] << "}.\n";
         }
-         
+
         break;
     }
     case 19:

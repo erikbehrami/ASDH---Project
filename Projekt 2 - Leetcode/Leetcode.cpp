@@ -4,8 +4,9 @@
 #include <iomanip>
 #include <queue>
 #include <stack>
+#include <algorithm>
 #include <map>
-#include <map>
+#include <unordered_map>
 using namespace std;
 
 // Definimi i pemes binare

@@ -593,23 +593,25 @@ public:
 //----------------------------------------------------------------------------------------
 
 // 18 - Time: O(n), Space: O(n)
-class Solution18
-{
+class Solution18 {
 public:
-    int countKDifference(vector<int> &nums, int k)
-    {
-        int n = nums.size();
-        map<int, int> mp;
-        int count = 0;
-        // |x - y| = k => {y = x + k or y = x - k}
+        vector<int> smallerNumbersThanCurrent(vector<int>& nums) {
+        int length = nums.size();
+        map <int, int> mp;
+        vector <int> numsSorted = nums;
+        sort(numsSorted.begin(), numsSorted.end());
 
-        for (auto x : nums)
-        {
-            count += mp[x + k] + mp[x - k];
-            mp[x];
+        for(int i = length - 1; i >= 0; i--){
+            mp[numsSorted[i]] = i;
         }
-        return count;
+        for(int i = 0; i < length; i++){
+
+            nums[i] = mp[nums[i]];
+        }
+
+        return nums;
     }
+
 };
 
 //----------------------------------------------------------------------------------------
@@ -983,14 +985,13 @@ start:
         vector<int> v;
         int target, a;
 
-        cout << "Vector elements{ \n";
+        cout << "Vector elements: \n";
         for (int i = 0; i < 5; i++)
         {
             cout << "v[" << i << "]: ";
             cin >> a;
             v.push_back(a);
         }
-        cout << "}\n";
 
         cout << "Sum target: ";
         cin >> a;
@@ -1020,9 +1021,9 @@ start:
     {
         Solution18 solution;
         vector<int> v;
-        int result, a, target;
+        int a;
 
-        cout << "Vector elements{ \n";
+        cout << "Vector elements: \n";
         for (int i = 0; i < 5; i++)
         {
             cout << "v[" << i << "]: ";
@@ -1030,11 +1031,17 @@ start:
             v.push_back(a);
         }
 
-        cout << "Absolute difference: ";
-        cin >> target;
+        v = solution.smallerNumbersThanCurrent(v);
+        cout << "Smaller number than current one: {";
 
-        result = solution.countKDifference(v, target);
-        cout << "Number of pairs with absolute difference: " << target << " is: " << result << "\n";
+        for (int i = 0; i < v.size(); i++)
+        {   
+            if(i!=v.size() - 1)
+            cout << v[i] << ", ";
+            else
+            cout << v[i] << "}.\n";
+        }
+         
         break;
     }
     case 19:

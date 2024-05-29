@@ -296,10 +296,9 @@ public:
         ListNode *temp1 = head;
         while (!st.empty())
         {
-            int topval = st.top();
-            st.pop();
-            temp1->val = topval;
+            temp1->val = st.top();
             temp1 = temp1->next;
+            st.pop();
         }
         return head;
     }
@@ -415,7 +414,7 @@ public:
 };
 //----------------------------------------------------------------------------------------
 
-// 12 - Time: O(n), Space: O(n)
+// 12 - Time: O(n^2), Space: O(1)
 class Solution12
 {
 public:
@@ -442,33 +441,25 @@ public:
 };
 //----------------------------------------------------------------------------------------
 
-// 13 - Time: O(n^2), Space: O(1)
+// 13 - Time: O(n), Space: O(1)
 class Solution13
 {
 public:
     int firstUniqChar(string s)
     {
-
-        for (int i = 0; i < s.length(); i++)
+        unordered_map<char, int> mp;
+        for (int i = 0; i < s.size(); i++)
         {
-            char z = s[i];
-            bool isUnique = true;
+            mp[s[i]]++;
+        }
 
-            for (int j = 0; j < s.length(); j++)
-            {
-                if (i != j && z == s[j])
-                {
-                    isUnique = false;
-                    break;
-                }
-            }
-
-            if (isUnique)
+        for (int i = 0; i < s.size(); i++)
+        {
+            if (mp[s[i]] == 1)
             {
                 return i;
             }
         }
-
         return -1;
     }
 };
@@ -511,9 +502,10 @@ class MyStack
 public:
     queue<int> q;
     MyStack() {}
+     // Time: O(n)
     void push(int x)
     {
-        q.push(x); // Time: O(n)
+        q.push(x);
         int s = q.size();
         for (int i = 0; i < s - 1; i++)
         {
@@ -521,19 +513,19 @@ public:
             q.pop();
         }
     }
-
-    int pop() // Time: O(1)
+    // Time: O(1)
+    int pop() 
     {
         int top = q.front();
         q.pop();
         return top;
     }
-
+    // Time: O(1)
     int top()
     {
-        return q.front(); // Time: O(1)
+        return q.front(); 
     }
-
+    // Time: O(1)
     bool empty()
     {
         return q.empty();
@@ -574,8 +566,8 @@ public:
     int findPermutationDifference(string s, string t)
     {
         int sum = 0;
-        map<char, int> sMap;
-        map<char, int> tMap;
+        unordered_map<char, int> sMap;
+        unordered_map<char, int> tMap;
 
         for (int i = 0; i < s.size(); i++)
         {
